@@ -1,10 +1,22 @@
 package com.hobby.taxisvc.domain;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Taxi {
+    @NotNull(message = "vehicle id cannot be null")
+    @Size(min = 4, max = 10, message = "the vehicle id must be greater than 4 and less than 11")
     String vehicleID;
+
+    @NotNull(message = "owner name cannot be null")
+    @Size(min = 4, max = 255, message = "owner name must be greater than 4 and less than 255")
     String ownerName;
+
+    @Min(value = 4, message = "capacity must be greater than 3 and less than 13")
+    @Max(value = 12, message = "capacity must be greater than 3 and less than 13")
     Integer capacity;
 
     public Taxi() {

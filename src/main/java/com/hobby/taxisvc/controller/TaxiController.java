@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/v1/taxi/")
 public class TaxiController {
@@ -17,7 +19,7 @@ public class TaxiController {
     TaxiService service;
 
     @PostMapping("/register")
-    public Taxi register(@RequestBody Taxi taxi) {
+    public Taxi register(@RequestBody @Valid Taxi taxi) {
         var registerTaxi =  service.register(taxi);
         return registerTaxi;
     }
